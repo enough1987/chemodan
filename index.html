@@ -1,0 +1,48 @@
+<!doctype>
+<html>
+<head>
+    <base href="/">
+    <title>Angular 2 Boilerplate</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- 1. Load libraries -->
+    <!-- Polyfill(s) for older browsers -->
+    <script src="node_modules/es6-shim/es6-shim.min.js"></script>
+
+    <script src="node_modules/zone.js/dist/zone.js"></script>
+    <script src="node_modules/reflect-metadata/Reflect.js"></script>
+    <script src="node_modules/systemjs/dist/system.src.js"></script>
+
+    <!-- 2. Configure SystemJS -->
+    <script src="systemjs.config.js"></script>
+
+    <script
+src='https://maps.googleapis.com/maps/api/js?key=AIzaSyANe5pqxsDBBzsdg0BQzGU4r7TwChAz9vQ&extension=.js'></script>
+
+    <link rel="stylesheet" href="app/css/reset.css">
+
+    <link rel="stylesheet" href="app/css/global.css">
+    <link rel="stylesheet" href="app/css/header-mod.css">
+  	<link rel="stylesheet" href="app/css/main-header.css">
+  	<link rel="stylesheet" href="app/css/main-scheme.css">
+    <link rel="stylesheet" href="app/css/main-advantages.css">
+    <link rel="stylesheet" href="app/css/categories.css">
+    <link rel="stylesheet" href="app/css/goods.css">
+    <link rel="stylesheet" href="app/css/footer.css">
+    <link rel="stylesheet" href="app/css/detail.css">
+
+    <base href="/">
+</head>
+<body id="body" >
+<header-component>
+        <div style="text-align: center; padding-top: 100px;">
+          Loading...
+        </div>
+</header-component>
+
+<script>
+    System.import('app').catch(function(err){ console.error(err);  });
+</script>
+<!--<script src="app/bundle.js"></script>-->
+
+</body>
+</html>

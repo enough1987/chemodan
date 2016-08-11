@@ -1,0 +1,47 @@
+
+.b-footer {
+	position: relative;
+	width: 100%;
+	padding: 5.062rem 0;
+	background: #292929;
+	color: #fff;
+}
+
+.b-footer__top-btn {
+	position: absolute;
+	top: -25px;
+	left: 50%;
+	display: inline-block;
+	width: 52px;
+	height: 52px;
+	margin-left: -25px;
+	background: #292929 url('../img/top-arrow.png') center no-repeat;
+	border-radius: 50%;
+	cursor: pointer;
+}
+
+.b-footer__contacts {
+	margin-left: 2rem;
+}
+
+.b-footer__contacts-item {
+	font-size: 1rem;
+	color: white;
+}
+
+.b-footer__phone-icon,
+.b-footer__email-icon {
+	display: inline-block;
+    width: .812rem;
+    height: .812rem;
+    margin-right: 0.002rem;
+    color: white;
+}
+
+.b-footer__phone-icon {
+	background: url('../img/phone.png') no-repeat;
+}
+
+.b-footer__email-icon {
+	background: url('../img/mail.png') no-repeat;
+}

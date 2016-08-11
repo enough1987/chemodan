@@ -1,0 +1,126 @@
+
+
+/* font-family: "Exo2Regular"; **/
+@font-face {
+    font-family: "Exo2Regular";
+    src: url("fonts/Exo2Regular/Exo2Regular.eot");
+    src: url("fonts/Exo2Regular/Exo2Regular.eot?#iefix")format("embedded-opentype"),
+    url("fonts/Exo2Regular/Exo2Regular.woff") format("woff"),
+    url("fonts/Exo2Regular/Exo2Regular.ttf") format("truetype");
+    font-style: normal;
+    font-weight: normal; 
+}
+/* font-family: "Exo2Medium"; **/
+@font-face {
+    font-family: "Exo2Medium";
+    src: url("fonts/Exo2Medium/Exo2Medium.eot");
+    src: url("fonts/Exo2Medium/Exo2Medium.eot?#iefix")format("embedded-opentype"),
+    url("fonts/Exo2Medium/Exo2Medium.woff") format("woff"),
+    url("fonts/Exo2Medium/Exo2Medium.ttf") format("truetype");
+    font-style: normal;
+    font-weight: normal;
+}
+/* font-family: "Exo2Italic"; **/
+@font-face {
+    font-family: "Exo2Italic";
+    src: url("fonts/Exo2Italic/Exo2Italic.eot");
+    src: url("fonts/Exo2Italic/Exo2Italic.eot?#iefix")format("embedded-opentype"),
+    url("fonts/Exo2Italic/Exo2Italic.woff") format("woff"),
+    url("fonts/Exo2Italic/Exo2Italic.ttf") format("truetype");
+    font-style: normal;
+    font-weight: normal;
+}
+/* font-family: "Exo2Bold"; **/
+@font-face {
+    font-family: "Exo2Bold";
+    src: url("fonts/Exo2Bold/Exo2Bold.eot");
+    src: url("fonts/Exo2Bold/Exo2Bold.eot?#iefix")format("embedded-opentype"),
+    url("fonts/Exo2Bold/Exo2Bold.woff") format("woff"),
+    url("fonts/Exo2Bold/Exo2Bold.ttf") format("truetype");
+    font-style: normal;
+    font-weight: normal;
+}
+
+.g-rotate-180 {
+    -webkit-transform: rotate(180deg);
+    transform: rotate(180deg);
+}
+
+.g-f-left {
+    float: left;
+}
+
+
+.g-f-right {
+    float: right;
+}
+
+.g-dis-none {
+    display: none;
+}
+
+.g-diagonal {
+	position: absolute;
+	bottom: 0;
+	width: 100%;
+	height: 10.312rem;
+	background: -webkit-linear-gradient(left top, transparent 49%, #fff 51%),
+	            -webkit-linear-gradient(rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.2)) 0 99% no-repeat,
+	            -webkit-linear-gradient(left top, transparent 49%, rgba(255, 255, 255, 0.2) 51%) no-repeat;
+	background: -webkit-linear-gradient(left top, transparent 49%, #fff 51%), -webkit-linear-gradient(rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.2)) 0 99% no-repeat, -webkit-linear-gradient(left top, transparent 49%, rgba(255, 255, 255, 0.2) 51%) no-repeat;
+	background: linear-gradient(to right bottom, transparent 49%, #fff 51%),
+	            linear-gradient(rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.2)) 0 99% no-repeat,
+	            linear-gradient(to right bottom, transparent 49%, rgba(255, 255, 255, 0.2) 51%) no-repeat;
+	background-size: cover, 100% 50%, 100% 50%;
+}
+
+
+.g-diagonal__adv {
+    top: 0;
+    -webkit-transform: rotate(180deg);
+            transform: rotate(180deg);
+}
+
+.g-clearfix {
+	clear: both;
+}
+
+.g-hide-but-on-mod-show, .g-display-none, .g-hide {
+	display: none;
+}
+
+.g-slide {
+	opacity: 0; /* Все слайды скрыты */
+	transition: opacity 500ms linear;	
+}
+
+.g-show {
+	display: block;
+}
+
+.g-relative {
+	position: relative;
+}
+
+.g-color-white-hover:hover {
+	color: white;
+}
+
+.g-opacity-0-2 {
+	opacity: 0.2;
+	transition: opacity 300ms linear;	
+}
+
+.g-opacity-1 {
+	opacity: 1;
+	transition: opacity 300ms linear;	
+}
+
+.g-pos-relative {
+	position: relative;
+}
+
+.g-opacity-0-5 {
+    opacity : 0.5 ;
+}
+
