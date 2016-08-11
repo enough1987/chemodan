@@ -1,0 +1,1043 @@
+
+	<!-- HEADER -->
+
+	<header class="b-header">
+
+		<!-- logo -->
+
+        <div class="b-header-head__logo-with-text">
+            <a href="#" >
+
+                <img class="b-header-head__img"
+                    src="img/logo.png" alt="logo" />
+
+                <div class="width-100" ></div>
+
+                <span class="b-header-head__text">
+{{ data.settings?.slogan }}
+                </span>
+
+            </a>
+        </div>
+
+		<!-- menu -->
+
+        <nav class="b-header-menu" >
+                    <data-wrapper class="g-hide-but-on-mod-show" >
+                        <label for="" class="show-menu"><i>&#9776;</i>Меню</label>
+                    </data-wrapper>
+
+                    <data-wrapper class="b-header-menu__table" >
+                      <div class="b-header-menu__ul" >
+
+                        <li
+(click)="anchor_down('first_down_scroll')"
+                        class="b-header-menu__li b-header-menu__li-hover" >
+                        	<a class="g-color-white-hover"
+                        	href="#work-scheme">Схема работы</a>
+                        </li>
+
+                        <li class="b-header-menu__li b-header-menu__li-empty g-color-black">
+                        | </li>
+
+                        <li
+(click)="anchor_down('second_down_scroll')"
+                        class="b-header-menu__li b-header-menu__li-hover" >
+                        	<a class="g-color-white-hover"
+                        	href="#advantages">Преимущества</a>
+                        </li>
+
+                        <li  class="b-header-menu__li b-header-menu__li-empty g-color-black">
+                        | </li>
+
+                        <li
+(click)="anchor_down('third_down_scroll')"
+                        class="b-header-menu__li b-header-menu__li-hover" >
+                        	<a class="g-color-white-hover"
+                        	href="#catalog">Каталог</a>
+                        </li>
+
+                      </div>
+                    </data-wrapper>
+        </nav>
+
+        <data-wr class="g-megia-100-on-950" ></data-wr>
+
+        <!--  tel -->
+
+		<div class="b-header-tel">
+                    <i class="phone-icon"></i>
+                    <span class="b-header-tel__item" >
+{{ data.settings?.phone }}
+                    </span>
+                    <br />
+                    <span class="b-header-tel__item" >
+                        время работы
+{{ data.settings?.time }}
+                    </span>
+        </div>
+
+        <!--  -->
+
+
+        <div class="b-header-cart"
+				id="b-header-cart"
+[ngClass]=" show_cart_modal ? '' : 'g-pos-relative' "
+				>
+
+                <span
+(click)="show_cart_func()"
+                id="cart-click-show"
+[ngClass]=" show_cart_modal ? 'g-hide' : 'g-show' "
+								>
+                        	<i class="b-header-cart__img-cart"></i>
+                        	<span class="g-relative">
+                        		Корзина
+                        		<span
+*ngIf="cart.length"
+														class="b-header-cart__length">
+                        			<i class="b-header-cart__length-letter" >
+{{ cart.length }}</i>
+                        		</span>
+                        	</span>
+                </span>
+
+                <data-wr id="wrapper-cart-for-opacity"
+[ngClass]=" show_cart_modal ? 'wrapper-cart-for-opacity' : '' "
+								>
+                </data-wr>
+
+                <div class="b-header-cart__chosen"
+[ngClass]=" show_cart_modal ? 'g-show' : 'g-hide' "
+                id="cart-click-hide" >
+                	<div class="g-pos-relative">
+					  <div class="b-header-cart__wrap">
+                        <div id="b-header-cart__close-popup"
+(click)="close_cart_func()"
+                        class="b-header-cart__close-popup">&#215;</div>
+                        <h3 class="b-header-cart__title"
+                        >Корзина</h3>
+
+
+					<data-wrap
+*ngFor=" let item of cart ; let idx = index "
+					>
+                        <div class="b-header-cart__item">
+                            <div
+(click)="delete_cart_item_func(item?.id)"
+                            class="b-header-cart__delete-item">&#215;</div>
+                            <img class="b-header-cart__img-item"
+[src]="item.master?.images[0]?.product_url"
+														alt="product-image">
+                            <div class="b-header-cart__descr">
+                                <h3 class="b-header-cart__descr-title">
+                                Пример товара</h3>
+                                <p class="b-header-cart__descr-body">
+{{ item.description }}
+                                </p>
+                                <div class="b-header-cart__counter-wrap">
+                                    <span class="b-header-cart__price-min">
+{{ item.price }}
+																		руб</span>
+                                    <div class="b-header-cart__counter">
+                                        <a
+(click)="change_amount_price(item)"
+																				class="b-header-cart__minus"></a>
+                                        <span class="b-header-cart__c-center" >
+{{ item.amount || 1 }}
+																				</span>
+                                        <a
+(click)="change_amount_price(item, 1)"
+																				class="b-header-cart__plus"></a>
+                                    </div>
+                                    <span class="b-header-cart__price-max">
+{{ item.price * ( item.amount || 1) }}
+																		руб</span>
+                                </div>
+                            </div>
+                        </div>
+						<div class="g-clearfix" ></div>
+					</data-wrap>
+
+
+                      </div>
+
+                        <form
+[ngClass]=" cart.length ? 'g-show' : 'g-hide' "
+												class="b-header-form">
+                            <input class="b-header-form__inp b-header-form__inp-first"
+                            type="text" placeholder="Ваше имя" required
+[(ngModel)]="buyer.name"
+														>
+                            <input class="b-header-form__inp"
+                            type="number" placeholder="Ваш телефон" required
+pattern="/^[0-9]{5,20}$/"
+[(ngModel)]="buyer.phone"
+														>
+                            <input class="b-header-form__inp-submit"
+                            type="buttom" value="Закажите"
+(click)="booking()"
+														>
+                        </form>
+
+<div class="g-clearfix" ></div>
+<p *ngIf=" phone_is_needed "
+style="color:red;"> Телефон должен быть заполнен </p>
+
+                        <div
+[ngClass]=" cart.length ? 'g-hide' : 'g-show' "
+												class="b-header__cart-total-empty">
+                            <h3 class="b-header__cart-total-empty-title">
+                            Ваша корзина пуста :(</h3>
+                            <a
+(click)="close_cart_func(); anchor_down('third_down_scroll');"
+														class="b-header__cart-total-empty-link"
+                            href="#catalog">Перейти к каталогу</a>
+                        </div>
+
+                	</div>
+				</div>
+        </div>
+
+        <div class="g-clearfix" ></div>
+
+	</header>
+
+	<!-- HEADER END -->
+
+
+	<!-- MAIN HEADER -->
+
+    <div class="b-main-header">
+
+	<!-- 0 -->
+<data-wrapper
+*ngFor=" let item of data?.banner | derp ; let idx = index "
+[ngClass]=" idx != 0 ? 'g-display-none' : '' "
+class="b-main-header__item" >
+
+
+                <div class="b-main-header__headline">
+                    <h2 class="b-main-header__headline-h"
+                    >
+{{ item.label }}
+										</h2>
+                </div>
+
+                <div class="b-main-header__left" >
+
+                    <div class="b-main-header-offer" >
+                        <p  class="b-main-header-offer_p" >
+{{ item.decsription }}
+
+                        </p>
+                    </div>
+
+                    <div class="b-main-header-btn-wrap">
+                        <input class="b-main-header-btn-wrap__input"
+                        type="button" value="Закажите звонок"
+(click)="show_hide_ckallback_funk()"												>
+                    </div>
+
+                </div>
+
+
+                <div class="b-main-header__right ">
+
+                    <div><img class="b-main-header-slider__img"
+[src]="item.image"
+										></div>
+
+                </div>
+
+</data-wrapper>
+
+<!--
+
+<data-wrapper class="b-main-header__item g-display-none" >
+
+
+                <div class="b-main-header__headline">
+                    <h2 class="b-main-header__headline-h"
+                    > доставка по Москве Бесплатная</h2>
+                </div>
+
+                <div class="b-main-header__left" >
+
+                    <div class="b-main-header-offer" >
+                        <p  class="b-main-header-offer_p" >
+                        Закажите 222222222 tytytytyt
+                        </p>
+                    </div>
+
+                    <div class="b-main-header-btn-wrap">
+                        <input class="b-main-header-btn-wrap__input"
+                        type="button" value="Закажите звонок"
+(click)="show_hide_ckallback_funk()"	                      >
+                    </div>
+
+                </div>
+
+
+                <div class="b-main-header__right ">
+
+                    <div><img class="b-main-header-slider__img"
+                    src="img/some.jpg" ></div>
+
+                </div>
+
+</data-wrapper>
+
+<data-wrapper class="b-main-header__item g-display-none" >
+
+
+                <div class="b-main-header__headline">
+                    <h2 class="b-main-header__headline-h"
+                    > по Москве Бесплатная доставка</h2>
+                </div>
+
+                <div class="b-main-header__left" >
+
+                    <div class="b-main-header-offer" >
+                        <p  class="b-main-header-offer_p" >
+                        111111111111111 1111111111111 11111111111111
+                        </p>
+                    </div>
+
+                    <div class="b-main-header-btn-wrap">
+                        <input class="b-main-header-btn-wrap__input"
+                        type="button" value="Закажите звонок"
+(click)="show_hide_ckallback_funk()"	                       >
+                    </div>
+
+                </div>
+
+
+                <div class="b-main-header__right ">
+
+                    <div><img class="b-main-header-slider__img"
+                    src="img/girl1.jpg" ></div>
+
+                </div>
+
+</data-wrapper>
+-->
+
+
+            <div class="g-clearfix"></div>
+
+           <div class="g-diagonal"></div>
+    </div>
+
+	<!-- END OF MAIN HEADER  -->
+
+	<!--  SCHEME  -->
+
+	<div
+id="second_down_scroll"
+    class="b-main-scheme" >
+
+
+        <div class="b-main-scheme__headline">
+            <h2 class="b-main-scheme__headline-h"
+            >Почему чемоданы покупают у нас?</h2>
+        </div>
+
+
+        <div class="b-main-scheme__advantages">
+            <div class="b-main-scheme__advantage">
+                <div class="b-main-scheme__advantage-img"></div>
+                <h5 class="b-main-scheme__advantage-h">
+                Доставка в течении
+                <p>24 часов (при заказе </p>
+                <p>от 4000 бесплатно, </p>
+                <p>меньше 4000р </p>
+                    доставка 300р)</h5>
+            </div>
+            <div class="b-main-scheme__advantage">
+                <div class="b-main-scheme__advantage-img"></div>
+                <h5 class="b-main-scheme__advantage-h"
+                > более 2347 <p>моделей в <p>наличие</h5>
+            </div>
+            <div class="b-main-scheme__advantage">
+                <div class="b-main-scheme__advantage-img"></div>
+                <h5 class="b-main-scheme__advantage-h">
+                оплата только <p>после доставки и </p>осмотра изделия</h5>
+            </div>
+            <div class="b-main-scheme__advantage">
+                <div class="b-main-scheme__advantage-img"></div>
+                <h5 class="b-main-scheme__advantage-h">
+                Гарантия на <p> все изделия</p>2 года</h5>
+            </div>
+            <div class="b-main-scheme__advantage">
+                <div class="b-main-scheme__advantage-img"></div>
+                <h5 class="b-main-scheme__advantage-h">
+                найдете дешевле <p></p> снизим цену</h5>
+            </div>
+            <div class="b-main-scheme__advantage">
+                <div class="b-main-scheme__advantage-img"></div>
+                <h5 class="b-main-scheme__advantage-h">
+                Цены на 20-30% <p></p> ниже конкурентов</h5>
+            </div>
+
+        </div>
+
+
+	    <div class="b-cloud-effect">
+            <img class="cloud-effect-img"
+            src="img/cloud-effect/cloud-1.png" alt="cloud-effect-img">
+            <img class="cloud-effect-img"
+            src="img/cloud-effect/cloud-2.png" alt="cloud-effect-img">
+            <img class="cloud-effect-img"
+            src="img/cloud-effect/cloud-3.png" alt="cloud-effect-img">
+            <img class="cloud-effect-img"
+            src="img/cloud-effect/cloud-4.png" alt="cloud-effect-img">
+            <img class="cloud-effect-img"
+            src="img/cloud-effect/cloud-5.png" alt="cloud-effect-img">
+            <img class="cloud-effect-img"
+            src="img/cloud-effect/cloud-6.png" alt="cloud-effect-img">
+            <img class="cloud-effect-img"
+            src="img/cloud-effect/cloud-7.png" alt="cloud-effect-img">
+            <img class="cloud-effect-img"
+            src="img/cloud-effect/cloud-8.png" alt="cloud-effect-img">
+        </div>
+
+        <div class="g-clearfix"></div>
+	</div>
+
+	<!--  END OF SCHEME  -->
+
+
+	<!--  ADVANTAGES  -->
+
+
+    <div class="b-main-advantages" >
+
+        <div class="g-diagonal g-diagonal__adv"></div>
+
+        <div class="g-clearfix"></div>
+
+
+            <div
+ id="first_down_scroll"
+            class="b-main-advantages__body">
+                <h3 class="b-main-advantages__h">
+                Наша схема работы</h3>
+
+                <div class="b-scheme">
+
+                        <div class="b-scheme__item">
+                            <div class="b-scheme__item-img"></div>
+                            <p class="b-scheme__item-p" >
+                            Делаете заявку на сайте</p>
+                        </div>
+
+                        <div class="b-scheme__item-arr">
+                            <div class="b-advantages__item-arr 1"></div>
+                        </div>
+
+                        <div class="b-scheme__item">
+                            <div class="b-scheme__item-img"></div>
+                            <p class="b-scheme__item-p" >
+                            Менеджер уточняет детали заказа</p>
+                        </div>
+
+                        <div class="b-scheme__item-arr">
+                            <div class="b-advantages__item-arr 1"></div>
+                        </div>
+
+                        <div class="b-scheme__item">
+                            <div class="b-scheme__item-img"></div>
+                            <p class="b-scheme__item-p" >
+                            Курьер доставит Вашу покупку на следующий день</p>
+                        </div>
+
+                </div>
+
+            </div>
+
+	</div>
+
+	<!--  END OF ADVANTAGES  -->
+
+    <div
+id="third_down_scroll"
+    class="b-categories">
+
+        <div
+*ngFor=" let item of data?.products | derp ; let idx = index "
+				class="b-category" >
+
+            <div
+(click)="change_products(item, idx)"
+            class="b-category-wrap">
+
+                <div
+
+[ngStyle]="{ 'background' : 'url(\''+ (item.icon || '../img/category-1.png') +'\') center no-repeat', 'background-size' : 'contain' }"
+                class="b-category-img"></div>
+                <h3 class="b-category-h">{{item.name}}</h3>
+
+            <div
+[ngClass]=" idx == active_idx ? 'b-category-arrow__active' : '' "
+            class="b-category-arrow"></div>
+            </div>
+        </div>
+<!--
+        <div class="b-category" targ="1">
+
+            <div class="b-category-wrap">
+
+                <div class="b-category-img b-category-img-1"></div>
+                <h3 class="b-category-h">Чемоданы</h3>
+
+            <div class="b-category-arrow"></div>
+            </div>
+
+        </div>
+
+        <div class="b-category" targ="2">
+
+            <div class="b-category-wrap">
+
+                <div class="b-category-img b-category-img-2"></div>
+                <h3 class="b-category-h">Чемоданы</h3>
+
+            <div class="b-category-arrow"></div>
+            </div>
+
+        </div>
+
+        <div class="b-category" targ="3" >
+
+            <div class="b-category-wrap">
+
+                <div class="b-category-img b-category-img-3"></div>
+                <h3 class="b-category-h">Чемоданы</h3>
+
+            <div class="b-category-arrow"></div>
+            </div>
+
+        </div>
+
+        <div class="b-category" targ="4" >
+
+            <div class="b-category-wrap">
+
+                <div class="b-category-img b-category-img-4"></div>
+                <h3 class="b-category-h">Чемоданы</h3>
+
+            <div class="b-category-arrow"></div>
+            </div>
+
+        </div>
+-->
+    </div>
+
+    <div class="b-category-hr">
+
+    </div>
+
+    <div class="b-goods">
+
+            <div
+*ngFor=" let item of showed_items?.products | derp ; let idx = index "
+            class="b-goods-item">
+
+                <div class="b-goods-item-wrap">
+
+
+
+                <div class="b-goods-img"
+[ngStyle]="{ 'background' : 'url(\''+ ( item.master.images[0]['product_url'] || '../img/category-1.png' ) +'\') center no-repeat', 'background-size' : 'contain' }"
+
+                ></div>
+                <h3 class="b-goods-name">
+{{ item.name }}
+                </h3>
+                <p class="b-goods-price">
+{{ item.price }} р. </p>
+                <div
+(click)="show_detail(item, idx)"
+                class="b-goods-more" >
+                Подробнее
+                </div>
+                </div>
+
+            </div>
+<!--
+
+            <div class="b-goods-item">
+
+                <div class="b-goods-item-wrap">
+                <div class="b-goods-img"
+style="background: url('../img/category-1.png') center no-repeat; background-size: contain;"
+                ></div>
+                <h3 class="b-goods-name"> Пример товара </h3>
+                <p class="b-goods-price"> 5000 р. </p>
+                <div class="b-goods-more" >
+                Подробнее
+                </div>
+                </div>
+
+            </div>
+
+
+            <div class="b-goods-item">
+
+                <div class="b-goods-item-wrap">
+                <div class="b-goods-img"
+style="background: url('../img/category-1.png') center no-repeat; background-size: contain;"
+                ></div>
+                <h3 class="b-goods-name"> Пример товара </h3>
+                <p class="b-goods-price"> 5000 р. </p>
+                <div class="b-goods-more" >
+                Подробнее
+                </div>
+                </div>
+
+            </div>
+
+
+            <div class="b-goods-item">
+
+                <div class="b-goods-item-wrap">
+                <div class="b-goods-img"
+style="background: url('../img/category-1.png') center no-repeat; background-size: contain;"
+                ></div>
+                <h3 class="b-goods-name"> Пример товара </h3>
+                <p class="b-goods-price"> 5000 р. </p>
+                <div class="b-goods-more" >
+                Подробнее
+                </div>
+                </div>
+
+            </div>
+
+
+            <div class="b-goods-item">
+
+                <div class="b-goods-item-wrap">
+                <div class="b-goods-img"
+style="background: url('../img/category-1.png') center no-repeat; background-size: contain;"
+                ></div>
+                <h3 class="b-goods-name"> Пример товара </h3>
+                <p class="b-goods-price"> 5000 р. </p>
+                <div class="b-goods-more" >
+                Подробнее
+                </div>
+                </div>
+
+            </div>
+
+            <div class="b-goods-item">
+
+                <div class="b-goods-item-wrap">
+                <div class="b-goods-img"
+style="background: url('../img/category-1.png') center no-repeat; background-size: contain;"
+                ></div>
+                <h3 class="b-goods-name"> Пример товара </h3>
+                <p class="b-goods-price"> 5000 р. </p>
+                <div class="b-goods-more" >
+                Подробнее
+                </div>
+                </div>
+
+            </div>
+
+
+            <div class="b-goods-item">
+
+                <div class="b-goods-item-wrap">
+                <div class="b-goods-img"
+style="background: url('../img/category-1.png') center no-repeat; background-size: contain;"
+                ></div>
+                <h3 class="b-goods-name"> Пример товара </h3>
+                <p class="b-goods-price"> 5000 р. </p>
+                <div class="b-goods-more" >
+                Подробнее
+                </div>
+                </div>
+
+            </div>
+
+
+            <div class="b-goods-item">
+
+                <div class="b-goods-item-wrap">
+                <div class="b-goods-img"
+style="background: url('../img/category-1.png') center no-repeat; background-size: contain;"
+                ></div>
+                <h3 class="b-goods-name"> Пример товара </h3>
+                <p class="b-goods-price"> 5000 р. </p>
+                <div class="b-goods-more" >
+                Подробнее
+                </div>
+                </div>
+
+            </div>
+
+
+            <div class="b-goods-item">
+
+                <div class="b-goods-item-wrap">
+                <div class="b-goods-img"
+style="background: url('../img/category-1.png') center no-repeat; background-size: contain;"
+                ></div>
+                <h3 class="b-goods-name"> Пример товара </h3>
+                <p class="b-goods-price"> 5000 р. </p>
+                <div class="b-goods-more" >
+                Подробнее
+                </div>
+                </div>
+
+            </div>
+
+
+            <div class="b-goods-item">
+
+                <div class="b-goods-item-wrap">
+                <div class="b-goods-img"
+style="background: url('../img/category-1.png') center no-repeat; background-size: contain;"
+                ></div>
+                <h3 class="b-goods-name"> Пример товара </h3>
+                <p class="b-goods-price"> 5000 р. </p>
+                <div class="b-goods-more" >
+                Подробнее
+                </div>
+                </div>
+
+            </div>
+-->
+    </div>
+<!-- id="b-detail-bgc" -->
+    <div
+[class.b-detail-bgc]="show_detail_item"  >
+    </div>
+<!--     class="g-dis-none" -->
+<!-- id="b-detail-item" -->
+    <div
+[hidden]=" !show_detail_item "
+[class.b-detail-item]=" show_detail_item "
+[style.top]=" 20 + pageYOffset + 'px' "
+    >
+        <div class="b-detail-wrap" >
+<!--         id="b-detail__close-popup"  -->
+        <div
+(click)=" close_detail() "
+        class="b-detail__close-popup">&#215;</div>
+        <h3  class="b-detail-header" >Пример товара</h3>
+        <div class="b-detail-blocks">
+
+            <div class="b-detail-block" >
+
+        <img
+*ngIf="detail_item_images?.length != 0 && detail_item_images?.length != 1"
+(click)="move_details_img(-1)"
+        class="b-details-left" id="dslider-left"
+        src="img/product-arr.png" alt="">
+
+        <img class="b-detail-img"
+[src]=" detail_item_image_main || '../img/category-1.png' " />
+
+        <img
+*ngIf="detail_item_images?.length != 0 && detail_item_images?.length != 1"
+(click)="move_details_img(+1)"
+        class="b-details-right g-rotate-180" id="dslider-right"
+        src="img/product-arr.png" alt="">
+
+        <hr
+*ngIf="detail_item_images?.length != 0 && detail_item_images?.length != 1"
+        class="b-dslider-hr" />
+
+        <div
+ *ngIf="detail_item_images?.length != 0 && detail_item_images?.length != 1"
+        class="b-details-img-small">
+
+<data-wrapper *ngFor=" let item of detail_item_images ; let idx = index "  >
+            <img
+*ngIf=" idx <= 2 "
+(click)="click_small_details_img( idx )"
+[class.b-details-img-small__one-active]=" detail_item_image_idx == idx "
+    class="b-details-img-small__one"
+[src]="item?.product_url"
+        alt="" />
+</data-wrapper>
+
+<!--
+            <img
+    class="b-details-img-small__one"
+[src]="img/category-2.png"
+    alt="" />
+            <img
+    class="b-details-img-small__one"
+[src]="img/category-3.png"
+    alt="">
+-->
+
+        </div>
+
+            </div>
+
+            <div class="b-detail-block" >
+<p class="b-detail-descr"
+>
+{{ detail_item.description }}
+</p>
+
+<div
+*ngIf=" detail_item?.variants?.length " >
+    <label
+    *ngFor=" let item of detail_item?.variants " >
+        <input
+(click)=" detail_item.detail_item_variants = item "
+        type="radio"
+        name="variants"
+        />
+        {{ item.options_text }} <br/>
+    </label>
+</div>
+
+<!--
+<p class="b-detail-s-block">
+<label class="b-detail-label">Цвет</label>
+<select class="b-detail-select"
+name="b-detail-color" id="b-detail-color">
+     <option selected value="item 1">item 1</option>
+     <option value="item 2">item 2</option>
+ </select>
+ </p>
+
+<p class="b-detail-s-block">
+<label class="b-detail-label">Размер</label>
+<select class="b-detail-select"
+name="b-detail-size" id="b-detail-size">
+     <option selected value="item 1">item 1</option>
+     <option value="item 2">item 2</option>
+ </select>
+ </p>
+-->
+
+ <p class="b-detail-price">
+{{ detail_item.price }}
+ p. </p>
+
+ <hr class="b-detail-hr" />
+
+<p class="b-detail__before-form"> Оставьте вашу заявку </p>
+
+<form >
+<input class="b-detail-input"
+type="text" placeholder="Ваше имя"
+[(ngModel)]="buyer.name"
+/>
+<input class="b-detail-input"
+type="number" placeholder="Ваш телефон" required
+pattern="/^[0-9]{5,20}$/"
+[(ngModel)]="buyer.phone"
+ />
+<p *ngIf=" phone_is_needed "
+style="color:red;"> Телефон должен быть заполнен </p>
+<input class="b-detail-input"
+type="email" placeholder="Ваш email" required
+pattern="/^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/i"
+[(ngModel)]="buyer.email"
+/>
+
+<div class="b-detail-button-wrap"  >
+    <input class="b-detail-button g-f-left b-detail-button-cart"
+type="button" value="В корзину"
+(click)="add_to_cart(detail_item)"
+/>
+
+    <input class="b-detail-button g-f-right b-detail-button-order"
+type="button" value="Закажите"
+(click)="booking()"
+/>
+
+    <p class="g-clearfix"></p>
+</div>
+
+</form>
+
+            </div>
+
+
+
+        </div>
+
+        <hr class="b-detail__line-end" />
+
+        </div>
+
+    <div class="b-detail__nav">
+
+        <div
+[class.g-opacity-0-5]=" detail_idx == 0 ? true : false "
+
+        class="b-detail__nav-but__before" >
+        <img
+        src="img/product-arr.png" alt="">
+        <span
+(click)="previous_detail('next')"
+        class="b-detail__nav-but__text" >
+        Предыдущий товар </span>
+        </div>
+
+        <div
+[class.g-opacity-0-5]=" showed_items.products && detail_idx == showed_items.products.length-1 ? true : false "
+        class="b-detail__nav-but__next" >
+        <span
+(click)="next_detail()"
+        class="b-detail__nav-but__text" >
+        Следующий товар </span>
+        <img class="g-rotate-180"
+        src="img/product-arr.png" alt="">
+        </div>
+
+    </div>
+
+    </div>
+
+<!--
+https://mapbuildr.com/buildr
+-->
+
+<style>
+    #map {
+        height:350px;
+        width:100%px;
+    }
+    .gm-style-iw * {
+        display: block;
+        width: 100%;
+    }
+    .gm-style-iw h4, .gm-style-iw p {
+        margin: 0;
+        padding: 0;
+    }
+    .gm-style-iw a {
+        color: #4272db;
+    }
+</style>
+
+<div id='map'></div>
+
+
+        <footer class="b-footer">
+
+            <div
+(click)="anchor_up()"
+            class="b-footer__top-btn"></div>
+
+            <div class="b-footer__contacts">
+                <div class="b-footer__contacts-item">
+                <i class="b-footer__phone-icon"></i>
+{{ data.settings?.phone }}
+                </div>
+                <div class="b-footer__contacts-item">
+                <i class="b-footer__email-icon"></i>
+{{ data.settings?.contact_email}}
+                </div>
+            </div>
+
+        </footer>
+
+
+
+<style>
+
+	.callback-background {
+		position:fixed;
+		top: 0px;
+		left: 0px;
+		width: 100%;
+		height: 100%;
+		background-color: black;
+		opacity: 0.5;
+	}
+
+	.callback-wrap {
+		position: fixed;
+    z-index: 10;
+    top: 50%;
+    left: 50%;
+    padding: 20px;
+    margin: -150px auto auto -120px;
+    text-align: center;
+    background: #fff;
+    color: #000;
+	}
+	.modal_end_towrap {
+		top: 75%;
+    left: 40%;
+	}
+	.callback-popup {
+		    position: absolute;
+		    top: 0;
+		    right: -1px;
+		    width: 26px;
+		    height: 20px;
+		    background: #fbae3b;
+		    color: #fff;
+  }
+	.callback-header {
+		font-family: "Exo2Bold";
+    font-size: 19px;
+	}
+	.callback-paragrath {
+    max-width: 200px;
+    margin: 20px auto 35px;
+    font-size: 14px;
+  }
+	.callback-item {
+		    padding: 8px;
+		    margin: 10px auto;
+		    font-size: 14px;
+		    border: 1px solid #000;
+		    color: #000;
+		    outline: none;
+				display: block;
+	}
+
+	.callback-btn {
+		    font-size: 18px;
+		    padding: 12px 25px;
+		    background: #fbae3b;
+		    border: none;
+		    color: #fff;
+	}
+
+</style>
+	      <div
+*ngIf="show_callback || show_modal_end"
+				class="callback-background" >	</div>
+				<div
+*ngIf="show_callback"
+				class="callback-wrap">
+						<div
+(click)="show_hide_ckallback_funk()"
+						class="callback-popup">X</div>
+						<h4 class="callback-header" >Закажите звонок</h4>
+						<p class="callback-paragrath">Оставьте заявку и мы вам обязательно перезвоним!</p>
+						<form class="callback-form">
+								<input class="callback-item" placeholder="Ваше имя" type="text" required
+[(ngModel)]="buyer.name"
+								>
+								<input class="callback-item" placeholder="Ваш телефон" type="text" required
+pattern="/^[0-9]{5,20}$/"
+[(ngModel)]="buyer.phone"
+								>
+								<input
+(click)="want_call()"
+								class="callback-btn" type="button" value="Закажите звонок">
+<p *ngIf=" phone_is_needed "
+style="color:red;"> Телефон должен быть заполнен </p>
+						</form>
+				</div>
+				<div
+*ngIf="show_modal_end"
+[ngClass]=" show_modal_end ? 'g-show' : 'g-hide' "
+				class="callback-wrap modal_end_towrap">
+						<h4 class="callback-header" >{{modal_end_text}}</h4>
+				</div>
