@@ -92,6 +92,11 @@ export class HeaderComponent {
     if ( !this.buyer || !this.buyer.phone ) {
       return true;
     }
+    if ( ! /^[0-9]{5,20}$/.test(this.buyer.phone) ) { 
+      return true;
+    }
+    console.log( ' t t t ');
+
   }
 
   add_to_cart(detail_item, buyer){
@@ -217,10 +222,28 @@ export class HeaderComponent {
         up();
   }
 
+
+  anchor_down(scroll_to_id) {
+        var objDiv = document.getElementById(scroll_to_id);
+        var t = objDiv.offsetTop
+        var inter;
+        //console.log( ' t ', t );
+        var down = function () {
+            var top = Math.max(document.body.scrollTop,document.documentElement.scrollTop);
+            //console.log( ' top ', top );
+            if(top < t) {
+                window.scrollBy(0,+50);
+                inter = setTimeout(down,25);
+            } else clearTimeout(inter);
+            return false;
+        }
+        down();
+  }
+/*
   anchor_down(scroll_to_id) {
         document.getElementById(scroll_to_id).scrollIntoView({block: "end", behavior: "smooth"});
   }
-
+*/
   show_modal(msg){
     this.show_modal_end = true;
     this.modal_end_text = msg;

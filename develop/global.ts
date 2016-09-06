@@ -335,6 +335,7 @@ link = '';     }
 
 })();
 
+/*
 ;(function(){
 
 	var arrows = document.querySelectorAll('.b-advantages__item-arr');
@@ -357,6 +358,6 @@ link = '';     }
 	}, 250 );
 
 })();
-
+*/
 
 }, 1000 );

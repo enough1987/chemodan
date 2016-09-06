@@ -31,16 +31,6 @@
                       <div class="b-header-menu__ul" >
 
                         <li
-(click)="anchor_down('first_down_scroll')"
-                        class="b-header-menu__li b-header-menu__li-hover" >
-                        	<a class="g-color-white-hover"
-                        	href="#work-scheme">Схема работы</a>
-                        </li>
-
-                        <li class="b-header-menu__li b-header-menu__li-empty g-color-black">
-                        | </li>
-
-                        <li
 (click)="anchor_down('second_down_scroll')"
                         class="b-header-menu__li b-header-menu__li-hover" >
                         	<a class="g-color-white-hover"
@@ -49,6 +39,18 @@
 
                         <li  class="b-header-menu__li b-header-menu__li-empty g-color-black">
                         | </li>
+
+
+                        <li
+(click)="anchor_down('schema_to_scroll')"
+                        class="b-header-menu__li b-header-menu__li-hover" >
+                        	<a class="g-color-white-hover"
+                        	href="#work-scheme">Схема работы</a>
+                        </li>
+
+                        <li class="b-header-menu__li b-header-menu__li-empty g-color-black">
+                        | </li>
+
 
                         <li
 (click)="anchor_down('third_down_scroll')"
@@ -170,7 +172,7 @@
 [(ngModel)]="buyer.name"
 														>
                             <input class="b-header-form__inp"
-                            type="number" placeholder="Ваш телефон" required
+                            type="text" placeholder="Ваш телефон" required 
 pattern="/^[0-9]{5,20}$/"
 [(ngModel)]="buyer.phone"
 														>
@@ -411,15 +413,15 @@ id="second_down_scroll"
 	<!--  ADVANTAGES  -->
 
 
-    <div class="b-main-advantages" >
+    <div class="b-main-advantages" id="schema_to_scroll" >
 
         <div class="g-diagonal g-diagonal__adv"></div>
 
         <div class="g-clearfix"></div>
 
 
-            <div
- id="first_down_scroll"
+            <div 
+ 
             class="b-main-advantages__body">
                 <h3 class="b-main-advantages__h">
                 Наша схема работы</h3>
@@ -457,6 +459,7 @@ id="second_down_scroll"
             </div>
 
 	</div>
+
 
 	<!--  END OF ADVANTAGES  -->
 
@@ -832,7 +835,7 @@ type="text" placeholder="Ваше имя"
 [(ngModel)]="buyer.name"
 />
 <input class="b-detail-input"
-type="number" placeholder="Ваш телефон" required
+type="text" placeholder="Ваш телефон" required
 pattern="/^[0-9]{5,20}$/"
 [(ngModel)]="buyer.phone"
  />
