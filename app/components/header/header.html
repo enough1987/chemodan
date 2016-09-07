@@ -184,12 +184,15 @@ pattern="/^[0-9]{5,20}$/"
 
 <div class="g-clearfix" ></div>
 <p *ngIf=" phone_is_needed "
+[ngClass]=" cart.length ? 'g-show' : 'g-hide' "
 style="color:red;"> Телефон должен быть заполнен </p>
 
                         <div
 [ngClass]=" cart.length ? 'g-hide' : 'g-show' "
 												class="b-header__cart-total-empty">
-                            <h3 class="b-header__cart-total-empty-title">
+                            <h3 
+                         
+                            class="b-header__cart-total-empty-title">
                             Ваша корзина пуста :(</h3>
                             <a
 (click)="close_cart_func(); anchor_down('third_down_scroll');"
@@ -254,76 +257,7 @@ class="b-main-header__item" >
 
 </data-wrapper>
 
-<!--
 
-<data-wrapper class="b-main-header__item g-display-none" >
-
-
-                <div class="b-main-header__headline">
-                    <h2 class="b-main-header__headline-h"
-                    > доставка по Москве Бесплатная</h2>
-                </div>
-
-                <div class="b-main-header__left" >
-
-                    <div class="b-main-header-offer" >
-                        <p  class="b-main-header-offer_p" >
-                        Закажите 222222222 tytytytyt
-                        </p>
-                    </div>
-
-                    <div class="b-main-header-btn-wrap">
-                        <input class="b-main-header-btn-wrap__input"
-                        type="button" value="Закажите звонок"
-(click)="show_hide_ckallback_funk()"	                      >
-                    </div>
-
-                </div>
-
-
-                <div class="b-main-header__right ">
-
-                    <div><img class="b-main-header-slider__img"
-                    src="img/some.jpg" ></div>
-
-                </div>
-
-</data-wrapper>
-
-<data-wrapper class="b-main-header__item g-display-none" >
-
-
-                <div class="b-main-header__headline">
-                    <h2 class="b-main-header__headline-h"
-                    > по Москве Бесплатная доставка</h2>
-                </div>
-
-                <div class="b-main-header__left" >
-
-                    <div class="b-main-header-offer" >
-                        <p  class="b-main-header-offer_p" >
-                        111111111111111 1111111111111 11111111111111
-                        </p>
-                    </div>
-
-                    <div class="b-main-header-btn-wrap">
-                        <input class="b-main-header-btn-wrap__input"
-                        type="button" value="Закажите звонок"
-(click)="show_hide_ckallback_funk()"	                       >
-                    </div>
-
-                </div>
-
-
-                <div class="b-main-header__right ">
-
-                    <div><img class="b-main-header-slider__img"
-                    src="img/girl1.jpg" ></div>
-
-                </div>
-
-</data-wrapper>
--->
 
 
             <div class="g-clearfix"></div>
@@ -469,6 +403,7 @@ id="third_down_scroll"
 
         <div
 *ngFor=" let item of data?.products | derp ; let idx = index "
+
 				class="b-category" >
 
             <div
@@ -486,62 +421,20 @@ id="third_down_scroll"
             class="b-category-arrow"></div>
             </div>
         </div>
-<!--
-        <div class="b-category" targ="1">
 
-            <div class="b-category-wrap">
-
-                <div class="b-category-img b-category-img-1"></div>
-                <h3 class="b-category-h">Чемоданы</h3>
-
-            <div class="b-category-arrow"></div>
-            </div>
-
-        </div>
-
-        <div class="b-category" targ="2">
-
-            <div class="b-category-wrap">
-
-                <div class="b-category-img b-category-img-2"></div>
-                <h3 class="b-category-h">Чемоданы</h3>
-
-            <div class="b-category-arrow"></div>
-            </div>
-
-        </div>
-
-        <div class="b-category" targ="3" >
-
-            <div class="b-category-wrap">
-
-                <div class="b-category-img b-category-img-3"></div>
-                <h3 class="b-category-h">Чемоданы</h3>
-
-            <div class="b-category-arrow"></div>
-            </div>
-
-        </div>
-
-        <div class="b-category" targ="4" >
-
-            <div class="b-category-wrap">
-
-                <div class="b-category-img b-category-img-4"></div>
-                <h3 class="b-category-h">Чемоданы</h3>
-
-            <div class="b-category-arrow"></div>
-            </div>
-
-        </div>
--->
     </div>
 
     <div class="b-category-hr">
 
     </div>
 
-    <div class="b-goods">
+    <div class="b-goods" id="b-goods" >
+
+
+<div (click)="down_go_products()"
+    class="g-goods-arrow g-goods-l-arrow" id="g-goods-l-arrow" ></div>
+<div (click)="up_go_products()"
+    class="g-goods-arrow g-goods-r-arrow" id="g-goods-r-arrow" ></div>
 
             <div
 *ngFor=" let item of showed_items?.products | derp ; let idx = index "
@@ -568,150 +461,7 @@ id="third_down_scroll"
                 </div>
 
             </div>
-<!--
 
-            <div class="b-goods-item">
-
-                <div class="b-goods-item-wrap">
-                <div class="b-goods-img"
-style="background: url('../img/category-1.png') center no-repeat; background-size: contain;"
-                ></div>
-                <h3 class="b-goods-name"> Пример товара </h3>
-                <p class="b-goods-price"> 5000 р. </p>
-                <div class="b-goods-more" >
-                Подробнее
-                </div>
-                </div>
-
-            </div>
-
-
-            <div class="b-goods-item">
-
-                <div class="b-goods-item-wrap">
-                <div class="b-goods-img"
-style="background: url('../img/category-1.png') center no-repeat; background-size: contain;"
-                ></div>
-                <h3 class="b-goods-name"> Пример товара </h3>
-                <p class="b-goods-price"> 5000 р. </p>
-                <div class="b-goods-more" >
-                Подробнее
-                </div>
-                </div>
-
-            </div>
-
-
-            <div class="b-goods-item">
-
-                <div class="b-goods-item-wrap">
-                <div class="b-goods-img"
-style="background: url('../img/category-1.png') center no-repeat; background-size: contain;"
-                ></div>
-                <h3 class="b-goods-name"> Пример товара </h3>
-                <p class="b-goods-price"> 5000 р. </p>
-                <div class="b-goods-more" >
-                Подробнее
-                </div>
-                </div>
-
-            </div>
-
-
-            <div class="b-goods-item">
-
-                <div class="b-goods-item-wrap">
-                <div class="b-goods-img"
-style="background: url('../img/category-1.png') center no-repeat; background-size: contain;"
-                ></div>
-                <h3 class="b-goods-name"> Пример товара </h3>
-                <p class="b-goods-price"> 5000 р. </p>
-                <div class="b-goods-more" >
-                Подробнее
-                </div>
-                </div>
-
-            </div>
-
-            <div class="b-goods-item">
-
-                <div class="b-goods-item-wrap">
-                <div class="b-goods-img"
-style="background: url('../img/category-1.png') center no-repeat; background-size: contain;"
-                ></div>
-                <h3 class="b-goods-name"> Пример товара </h3>
-                <p class="b-goods-price"> 5000 р. </p>
-                <div class="b-goods-more" >
-                Подробнее
-                </div>
-                </div>
-
-            </div>
-
-
-            <div class="b-goods-item">
-
-                <div class="b-goods-item-wrap">
-                <div class="b-goods-img"
-style="background: url('../img/category-1.png') center no-repeat; background-size: contain;"
-                ></div>
-                <h3 class="b-goods-name"> Пример товара </h3>
-                <p class="b-goods-price"> 5000 р. </p>
-                <div class="b-goods-more" >
-                Подробнее
-                </div>
-                </div>
-
-            </div>
-
-
-            <div class="b-goods-item">
-
-                <div class="b-goods-item-wrap">
-                <div class="b-goods-img"
-style="background: url('../img/category-1.png') center no-repeat; background-size: contain;"
-                ></div>
-                <h3 class="b-goods-name"> Пример товара </h3>
-                <p class="b-goods-price"> 5000 р. </p>
-                <div class="b-goods-more" >
-                Подробнее
-                </div>
-                </div>
-
-            </div>
-
-
-            <div class="b-goods-item">
-
-                <div class="b-goods-item-wrap">
-                <div class="b-goods-img"
-style="background: url('../img/category-1.png') center no-repeat; background-size: contain;"
-                ></div>
-                <h3 class="b-goods-name"> Пример товара </h3>
-                <p class="b-goods-price"> 5000 р. </p>
-                <div class="b-goods-more" >
-                Подробнее
-                </div>
-                </div>
-
-            </div>
-
-
-            <div class="b-goods-item">
-
-                <div class="b-goods-item-wrap">
-                <div class="b-goods-img"
-style="background: url('../img/category-1.png') center no-repeat; background-size: contain;"
-                ></div>
-                <h3 class="b-goods-name"> Пример товара </h3>
-                <p class="b-goods-price"> 5000 р. </p>
-                <div class="b-goods-more" >
-                Подробнее
-                </div>
-                </div>
-
-            </div>
--->
     </div>
 <!-- id="b-detail-bgc" -->
     <div
@@ -767,16 +517,7 @@ style="background: url('../img/category-1.png') center no-repeat; background-siz
         alt="" />
 </data-wrapper>
 
-<!--
-            <img
-    class="b-details-img-small__one"
-[src]="img/category-2.png"
-    alt="" />
-            <img
-    class="b-details-img-small__one"
-[src]="img/category-3.png"
-    alt="">
--->
+
 
         </div>
 
@@ -801,25 +542,7 @@ style="background: url('../img/category-1.png') center no-repeat; background-siz
     </label>
 </div>
 
-<!--
-<p class="b-detail-s-block">
-<label class="b-detail-label">Цвет</label>
-<select class="b-detail-select"
-name="b-detail-color" id="b-detail-color">
-     <option selected value="item 1">item 1</option>
-     <option value="item 2">item 2</option>
- </select>
- </p>
 
-<p class="b-detail-s-block">
-<label class="b-detail-label">Размер</label>
-<select class="b-detail-select"
-name="b-detail-size" id="b-detail-size">
-     <option selected value="item 1">item 1</option>
-     <option value="item 2">item 2</option>
- </select>
- </p>
--->
 
  <p class="b-detail-price">
 {{ detail_item.price }}
@@ -902,9 +625,7 @@ type="button" value="Закажите"
 
     </div>
 
-<!--
-https://mapbuildr.com/buildr
--->
+
 
 <style>
     #map {
@@ -942,6 +663,10 @@ https://mapbuildr.com/buildr
                 <i class="b-footer__email-icon"></i>
 {{ data.settings?.contact_email}}
                 </div>
+            </div>
+
+            <div class="b-footer__copyright" >
+©2016
             </div>
 
         </footer>

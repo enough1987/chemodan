@@ -3,6 +3,7 @@ import { Component } from '@angular/core';
 import {StorageService} from "app/services/storage.service";
 import {DerpPipe} from "app/pipes/derp.pipe";
 
+
 @Component({
 
   selector: 'header-component',
@@ -161,6 +162,40 @@ export class HeaderComponent {
       this.showed_items = item;
       this.active_idx = idx;
   }
+ 
+  up_go_products(){
+      //console.log( this.data, this.active_idx );
+      if ( !this.active_idx ) {
+        this.active_idx = 1;
+        this.showed_items = this.data.products[this.active_idx];
+        return;
+      }
+      if (  this.active_idx < 4 ) {
+        this.active_idx++;
+        this.showed_items = this.data.products[this.active_idx];
+        console.log( this.data.products,  this.active_idx );
+      } else {
+        this.active_idx = 0;
+        this.showed_items = this.data.products[this.active_idx];        
+      }
+  }
+ 
+  down_go_products(){
+      console.log( this.data, this.active_idx );
+      if ( !this.active_idx ) {
+        this.active_idx = 4;
+        this.showed_items = this.data.products[this.active_idx];
+        return;
+      }
+      if ( this.active_idx > 0 ) {
+        this.active_idx--;
+        this.showed_items = this.data.products[this.active_idx];
+        console.log( this.data.products,  this.active_idx );
+      } else {
+        this.active_idx = 4;
+        this.showed_items = this.data.products[this.active_idx];        
+      }
+  } 
 
   show_detail(item, idx) {
       console.log( 'detail items ', item);
@@ -254,14 +289,17 @@ export class HeaderComponent {
     }, 2000)
   }
 
-  ngAfterViewInit() {
+  set_global_js(){
     var src = 'app/global.js';
     var script = document.createElement('script');
     script.src = src;
     var head = document.getElementsByTagName('head')[0];
     head.appendChild(script);
+  };
 
-    console.log( 'ngAfterViewInit ' );
+  ngAfterViewInit() {
+    this.set_global_js();
+    //console.log( 'ngAfterViewInit ' );
   }
 
 }

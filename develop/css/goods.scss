@@ -61,6 +61,27 @@
     background: #486080;
 }
 
+.g-goods-arrow {
+    position: absolute;
+    top: 2350px;
+
+    width: 0; 
+    height: 0; 
+    border-top: 80px solid transparent;
+    border-bottom: 80px solid transparent;   
+
+    cursor: pointer;
+}
+
+.g-goods-l-arrow {
+    left: 4%;
+    border-right:10px solid #dcdde4; 
+}
+
+.g-goods-r-arrow {
+    right: 4%;
+    border-left:10px solid #dcdde4; 
+}
 
 @media screen and (max-width: 1015px) {
     .b-goods {
