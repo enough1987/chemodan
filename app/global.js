@@ -15,7 +15,7 @@ setTimeout(function () {
                 result = end_point;
             l_arrow.style.top = result;
             r_arrow.style.top = result;
-            //console.log( l_arrow.style.top , ' - ', start_point  , end_point , mouse_y );		
+            //console.log( l_arrow.style.top , ' - ', start_point  , end_point , mouse_y );
         };
         goods.addEventListener("mousemove", event_func, false);
         goods.addEventListener("mousewheel", event_func, false);
